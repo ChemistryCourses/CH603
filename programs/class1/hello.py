@@ -1,0 +1,11 @@
+#this is write hello world
+print('Hello World')
+print('what is your name:')
+myName=raw_input()
+print('Nice to meet you '+myName)
+print('length of your name')
+print(len(myName))
+print('what is your age?')
+myAge=raw_input()
+#print(int(myAge)+1)
+print('you will be '+str(int(myAge)+1)+' years in one years')
