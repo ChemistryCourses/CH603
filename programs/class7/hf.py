@@ -1,5 +1,7 @@
 #This a program to calculate the Hatree-Fock energy of a closed shell molecule
 from no_of_electron import no_of_e
+from distance import find_distance
+from read_two_e import read_2_e
 #Read the geometry
 input_file=open('geom.dat')   #open the file
 
@@ -49,5 +51,26 @@ for i in range(len(ATOM_SYMBOL)):
  NE+=k 
  
 print('Total no of electron is '+str(NE))
+
+#calculate the nuclear repulsion energy
+E_nuc=0.0
+for i in range(NATOM):
+    for j in range(0,i):
+         Z_a=no_of_e(ATOM_SYMBOL[i])
+         Z_b=no_of_e(ATOM_SYMBOL[j])
+         R_ab=find_distance(GEOM[i],GEOM[j])
+         print(R_ab)
+         E_nuc+=(Z_a*Z_b)/R_ab
+print('Nuclear repulsion energy '+str(E_nuc)+ ' a.u.')
+
+#basis set dimension
+nbasis=7
+#Read one electron integrals 
+# Reads s
+#S=read_file('s.dat',nbasis)
+
+twoe=read_2_e(nbasis)
+print(twoe)
+
 
    
